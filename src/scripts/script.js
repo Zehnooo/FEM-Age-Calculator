@@ -1,8 +1,9 @@
-console.log('init');
-import calc from './calculator.js';
+console.log('init start');
+import { init } from './dom.js';
 
-calc.setValue("day", "15");
-calc.setValue("month", "9");
-calc.setValue("year", "2026");
+(() => {
+    init();
+    console.log('init complete');
+})();
 
-console.log(calc.formatTime(calc.returnCalcDate(), calc.returnCurrentDate()));
+
