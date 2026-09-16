@@ -1,6 +1,7 @@
 import { newEl, collectForm } from './utils.js';
 import calc from './calculator.js';
 import icons from './icons.js';
+import { updateAgeElements } from "./domUpdates.js";
 
 const app = document.querySelector('#app');
 
@@ -12,7 +13,7 @@ const inputs = [
 
 export const init = () => {
     const con = newEl('div');
-    con.append(inputForm());
+    con.append(inputForm(), resultSection());
     app.append(con);
 }
 
@@ -22,28 +23,39 @@ const inputForm = () => {
 
     f.addEventListener('submit', (e) => {
         e.preventDefault();
-        const data = collectForm(e);
-        console.log(data);
+        const res = collectForm(e);
+        if (res.success){
+            Object.entries(res.data).forEach(([key, value]) => {  calc.setValue(key, value); })
+            const age = calc.formatTime(calc.returnCalcDate(), calc.returnCurrentDate());
+            Object.entries(age).forEach(([key, value]) => {
+                updateAgeElements(key, value);
+            })
+            console.log('Calculated Age: ', age);
+        }
     });
 
-    const inputCon = newEl('div');
+    const dateError = newEl('div', null, 'fullDate-messages');
+
+    const allInputCon = newEl('div');
 
     inputs.forEach(i => {
         const input = newInput(i);
-        inputCon.append(input);
+        allInputCon.append(input);
     });
 
     const submit = newEl('button', null, 'submit-form');
     submit.type = 'submit';
     submit.innerHTML = icons.submit;
 
-    f.append(inputCon, submit);
+    f.append(allInputCon, dateError, submit);
     c.append(f);
     return c;
 }
 
 const newInput = (type) => {
     const c = newEl('div');
+    const inputTray = newEl('div');
+    const msgTray = newEl('div');
     const inp = newEl('input');
     inp.type = 'text';
 
@@ -51,6 +63,10 @@ const newInput = (type) => {
 
     Object.entries(type)
         .forEach(([key, value]) => {
+            key === 'day' ? inp.placeholder = '30' : key === 'month' ? inp.placeholder = '8' : inp.placeholder = '2026'
+            c.id = `${key}-container`
+            inputTray.id = `${key}-tray`;
+            msgTray.id = `${key}-messages`;
             lab.textContent = key;
             lab.htmlFor = `${key}-input`;
             inp.name = key;
@@ -58,6 +74,19 @@ const newInput = (type) => {
             inp.maxLength = value.length;
         });
 
-    c.append(lab, inp);
+    inputTray.append(lab, inp);
+    c.append(inputTray, msgTray);
+    return c;
+}
+
+const resultSection = () => {
+    const c = newEl('div');
+    let resultCon = newEl('div');
+    ["years", "months", "days"].forEach(res => {
+        const results = newEl('span', '--', `${res}-result`);
+        const name = newEl('p', res);
+        resultCon.append(results, name);
+    });
+    c.append(resultCon);
     return c;
 }

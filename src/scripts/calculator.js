@@ -12,20 +12,14 @@ export default {
     returnCalcDate(){
         return new Date(this.year, this.month - 1, this.day)
     },
-    formatTime(current, given){
-        let years = given.getFullYear() - current.getFullYear();
-        let months = given.getMonth() - current.getMonth();
-        let days = given.getDate() - current.getDate();
+    formatTime(given, current){
+        let years = current.getFullYear() - given.getFullYear();
+        let months = current.getMonth() - given.getMonth();
+        let days = current.getDate() - given.getDate();
 
         if (days < 0) {
             months--;
-
-            const previousMonth = new Date(
-                given.getFullYear(),
-                given.getMonth(),
-                0
-            );
-
+            const previousMonth = new Date(given.getFullYear(), given.getMonth(),0);
             days += previousMonth.getDate();
         }
 
@@ -33,7 +27,6 @@ export default {
             years--;
             months += 12;
         }
-
 
         return {
             years,
