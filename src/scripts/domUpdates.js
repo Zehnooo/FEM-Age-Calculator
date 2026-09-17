@@ -16,5 +16,5 @@ export const applyStatusClass = (inputName, inputStatus) => {
 }
 
 export const updateAgeElements = (inputName, value) => {
-    document.querySelector(`#${inputName}-result`).textContent = String(value);
+    document.querySelector(`#${inputName}-result`).textContent = value;
 }

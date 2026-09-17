@@ -17,18 +17,20 @@ html, body {
 #app {
     background: var(--grey-100);
     min-height: 100vh;
-
+    min-width: 550px;
 }
 
 #content {
     background: var(--white);
     border-radius: .6rem .6rem 6.25rem .6rem;
     max-width: calc(100% - 36rem);
+    min-width: 500px;
     margin: 0 auto;
     box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
 }
 
 .fx { display: flex; }
+.fww { flex-wrap: wrap; }
 .fdc { flex-direction: column; }
 .fdr { flex-direction: row; }
 
@@ -80,23 +82,40 @@ html, body {
 
 .brt { border: 1px solid transparent; }
 .brg { border: 1px solid var(--grey-200); }
+
 .txt-p { color: var(--purple); }
 .txt-b { color: var(--black); }
-.txt-g { color: var(--grey-200); }
+.txt-g2 { color: var(--grey-200); }
+.txt-g5 { color: var(--grey-500); }
 
 .bgw { background: var(--white); }
 
 
 .inp-tray label { text-transform: uppercase; letter-spacing: .2rem; }
-.inp { min-width: 0; field-sizing: content;  }
-.inp::placeholder { font-weight: 700; }
+
+.inp {
+    min-width: 8rem;
+    field-sizing: content;
+    max-width: 100%;
+    height: 4rem;
+    caret-color: var(--purple);
+}
+.inp:focus { outline: 1px solid var(--purple); }
+.inp:hover, .inp-tray label { cursor: pointer; }
+.inp::placeholder { font-weight: 700; color: var(--grey-500); }
 
 #submit-form.btn {
-    background: var(--purple);
+    background-color: var(--purple);
     cursor: pointer;
-    transition: transform 0.06s ease-in-out;
+    transition: transform 0.06s ease-in-out, background-color .2s ease-in-out;
 }
 
 #submit-form.btn:active { transform: scale(90%); }
+#submit-form.btn:hover { background-color: var(--black); }
 
-.result > p {  margin: 0; font-style: italic; }
+.result > p {  margin: 0; clamp(12px, 5cqw, 24px); }
+.result > span { text-wrap: nowrap; text-align: center; }
+.result > * { font-style: italic; }
+
+.hr { background: var(--grey-100); opacity: .3; }
+

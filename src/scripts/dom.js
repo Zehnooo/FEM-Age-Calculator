@@ -57,11 +57,11 @@ const newInput = (type) => {
     const c = newEl('div', null, null, ['p04']);
     const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
     const msgTray = newEl('div');
-    const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p06', 'brt', 'fs600', 'bgw', 'brg']);
+    const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p06', 'brt', 'fs600', 'bgw', 'brg', 'txt-b', 'fw700']);
     inp.type = 'text';
     inp.required = true;
 
-    const lab = newEl('label', null, null, ['fw700']);
+    const lab = newEl('label', null, null, ['fw700', 'txt-g5']);
 
     Object.entries(type)
         .forEach(([key, value]) => {
@@ -97,8 +97,8 @@ const resultSection = () => {
     const c = newEl('div', null, null, ['p1']);
     let resultCon = newEl('div', null, null, ['fx', 'fdc', 'gp04']);
     ["years", "months", "days"].forEach(res => {
-        const con = newEl('div', null, null, ['fx', 'wa', 'ac', 'gp04', 'result']);
-        const results = newEl('span', '--', `${res}-result`, ['txt-p', 'fs1000', 'fw600']);
+        const con = newEl('div', null, null, ['fx', 'wa', 'ac', 'gp06', 'start', 'result']);
+        const results = newEl('span', '- -', `${res}-result`, ['txt-p', 'fs1000', 'fw800']);
         const name = newEl('p', res, null, ['txt-b', 'fs1000', 'fw800']);
         con.append(results, name);
         resultCon.append(con);
