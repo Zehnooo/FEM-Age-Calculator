@@ -25,12 +25,9 @@ const inputForm = () => {
         e.preventDefault();
         const res = collectForm(e);
         if (res.success){
-            Object.entries(res.data).forEach(([key, value]) => {  calc.setValue(key, value); })
-            const age = calc.formatTime(calc.returnCalcDate(), calc.returnCurrentDate());
-            Object.entries(age).forEach(([key, value]) => {
-                updateAgeElements(key, value);
-            })
-            console.log('Calculated Age: ', age);
+            Object.entries(res.data).forEach(([key, value]) => {  calc.setValue(key, value); });
+            const age = calc.returnAge(calc.returnCalcDate(), calc.returnCurrentDate());
+            Object.entries(age).forEach(([key, value]) => { updateAgeElements(key, value); });
         }
     });
 
@@ -58,12 +55,24 @@ const newInput = (type) => {
     const msgTray = newEl('div');
     const inp = newEl('input');
     inp.type = 'text';
+    inp.required = true;
 
     const lab = newEl('label');
 
     Object.entries(type)
         .forEach(([key, value]) => {
-            key === 'day' ? inp.placeholder = '30' : key === 'month' ? inp.placeholder = '8' : inp.placeholder = '2026'
+            switch(key){
+                case 'day':
+                    inp.placeholder = '31';
+                    break;
+                case 'month':
+                    inp.placeholder = '12';
+                    break;
+                case 'year':
+                    inp.placeholder = '2026';
+                    inp.minLength = value.length;
+                    break;
+            }
             c.id = `${key}-container`
             inputTray.id = `${key}-tray`;
             msgTray.id = `${key}-messages`;
