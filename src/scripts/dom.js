@@ -1,7 +1,7 @@
 import { newEl, collectForm } from './utils.js';
 import calc from './calculator.js';
 import icons from './icons.js';
-import { updateAgeElements } from "./domUpdates.js";
+import {updateAgeElements, updateDigits} from "./domUpdates.js";
 
 const app = document.querySelector('#app');
 
@@ -20,6 +20,7 @@ export const init = () => {
 const inputForm = () => {
     const c = newEl('div', null, null,  ['p1']);
     const f = newEl('form', null, 'age-input-form', ['fx', 'fdc', 'gp06']);
+    f.noValidate = true;
 
     f.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -57,9 +58,11 @@ const newInput = (type) => {
     const c = newEl('div', null, null, ['p04']);
     const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
     const msgTray = newEl('div');
+
     const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p06', 'brt', 'fs600', 'bgw', 'brg', 'txt-b', 'fw700']);
     inp.type = 'text';
     inp.required = true;
+    inp.addEventListener('focusout', updateDigits);
 
     const lab = newEl('label', null, null, ['fw700', 'txt-g5']);
 
