@@ -78,13 +78,16 @@ html, body {
 .w { width: 100%; }
 .wa  { width: auto; }
 
-.brt { border: 2px solid transparent; }
-
+.brt { border: 1px solid transparent; }
+.brg { border: 1px solid var(--grey-200); }
 .txt-p { color: var(--purple); }
 .txt-b { color: var(--black); }
 .txt-g { color: var(--grey-200); }
 
-.inp-tray label { text-transform: uppercase; }
+.bgw { background: var(--white); }
+
+
+.inp-tray label { text-transform: uppercase; letter-spacing: .2rem; }
 .inp { min-width: 0; field-sizing: content;  }
 .inp::placeholder { font-weight: 700; }
 

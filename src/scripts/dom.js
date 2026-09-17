@@ -57,7 +57,7 @@ const newInput = (type) => {
     const c = newEl('div', null, null, ['p04']);
     const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
     const msgTray = newEl('div');
-    const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p04', 'brt']);
+    const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p06', 'brt', 'fs600', 'bgw', 'brg']);
     inp.type = 'text';
     inp.required = true;
 
