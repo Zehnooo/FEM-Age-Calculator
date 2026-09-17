@@ -12,7 +12,7 @@ export default {
     returnCalcDate(){
         return new Date(this.year, this.month - 1, this.day)
     },
-    formatTime(given, current){
+    returnAge(given, current){
         let years = current.getFullYear() - given.getFullYear();
         let months = current.getMonth() - given.getMonth();
         let days = current.getDate() - given.getDate();
