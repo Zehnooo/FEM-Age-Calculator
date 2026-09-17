@@ -34,7 +34,6 @@ export const collectForm = (e) => {
                 errCount++;
             });
         }
-
     });
 
     const isValidInputs = Object.values(results).every( result => result === null );
