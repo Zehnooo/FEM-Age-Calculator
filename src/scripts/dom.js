@@ -18,7 +18,7 @@ export const init = () => {
 }
 
 const inputForm = () => {
-    const c = newEl('div', null, null,  ['p1']);
+    const c = newEl('div', null, null,  ['p1', 'pr']);
     const f = newEl('form', null, 'age-input-form', ['fx', 'fdc', 'gp06']);
     f.noValidate = true;
 
@@ -32,11 +32,11 @@ const inputForm = () => {
         }
     });
 
-    const dateError = newEl('div', null, 'fullDate-messages');
+    const dateError = newEl('div', null, 'fullDate-messages', ['pa']);
 
     const allInputCon = newEl('div', null, null, ['fx', 'start', 'gp1']);
 
-    inputs.forEach(i => {
+    ['day', 'month', 'year'].forEach(i => {
         const input = newInput(i);
         allInputCon.append(input);
     });
@@ -54,10 +54,10 @@ const inputForm = () => {
     return c;
 }
 
-const newInput = (type) => {
-    const c = newEl('div', null, null, ['p04', 'g04']);
+const newInput = (name) => {
+    const c = newEl('div', null, null, ['fx', 'fdc', 'p04', 'gp04']);
     const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
-    const msgTray = newEl('div');
+    const msgTray = newEl('div', null, null, ['msg-tray']);
 
     const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p06', 'brt', 'fs600', 'bgw', 'brg', 'txt-b', 'fw700']);
     inp.type = 'text';
@@ -66,9 +66,7 @@ const newInput = (type) => {
 
     const lab = newEl('label', null, null, ['fw700', 'txt-g5']);
 
-    Object.entries(type)
-        .forEach(([key, value]) => {
-            switch(key){
+    switch(name){
                 case 'day':
                     inp.placeholder = 'DD';
                     break;
@@ -80,16 +78,14 @@ const newInput = (type) => {
 
                     break;
             }
-            c.id = `${key}-container`
-            inputTray.id = `${key}-tray`;
-            msgTray.id = `${key}-messages`;
-            lab.textContent = key;
-            lab.htmlFor = `${key}-input`;
-            inp.name = key;
-            inp.id = `${key}-input`;
-            inp.maxLength = value.length;
-            inp.minLength = value.length;
-        });
+            c.id = `${name}-container`
+            inputTray.id = `${name}-tray`;
+            msgTray.id = `${name}-messages`;
+            lab.textContent = name;
+            lab.htmlFor = `${name}-input`;
+            inp.name = name;
+            inp.id = `${name}-input`;
+
 
     inputTray.append(lab, inp);
     c.append(inputTray, msgTray);

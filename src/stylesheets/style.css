@@ -91,6 +91,9 @@ html, body {
 
 .bgw { background: var(--white); }
 
+.pr { position: relative; }
+.pa { position: absolute; }
+
 
 .inp-tray label { text-transform: uppercase; letter-spacing: .2rem; }
 
@@ -126,4 +129,6 @@ html, body {
 .msg.error { color: var(--red); }
 
 .inp-tray.success .inp { border: 1px solid var(--green); }
+.msg-tray { min-height: 50px; }
 #fullDate-messages > p { max-width: none !important; }
+#fullDate-messages { top: 0; right: 0; }
