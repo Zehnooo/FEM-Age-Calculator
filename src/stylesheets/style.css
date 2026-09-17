@@ -7,11 +7,11 @@
     --grey-500: hsl(0, 1%, 44%);
     --black: hsl(0, 0%, 0%);
     --inp-fs: 32px;
-    --ff: Poppins, 'arial';
+    --ff: Poppins;
 }
 
 html, body {
-    font-family: var(--ff);
+    font-family: var(--ff), "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
 }
 #app {
@@ -25,7 +25,7 @@ html, body {
     border-radius: .6rem .6rem 6.25rem .6rem;
     max-width: calc(100% - 36rem);
     margin: 0 auto;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
 }
 
 .fx { display: flex; }
