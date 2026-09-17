@@ -42,5 +42,9 @@ export default {
             return { success: false, message: 'Empty or invalid value.' };
         } return { success: true };
         },
+        checkNum(v){
+            if (isNaN(v)) { return { success: false, message: 'Value must be a numerical value.' }; }
+            return { success: true };
+        }
     }
 }
