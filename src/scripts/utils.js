@@ -39,7 +39,14 @@ export const collectForm = (e) => {
     });
 
     const isValidInputs = Object.values(results).every( result => result.errors.length === 0 );
-    if (isValidInputs) { results.fullDate = (validation([year, month, day], 'full-date')); }
+    if (isValidInputs) { results.fullDate = (validation([year, month, day], 'full-date'));
+        if (results.fullDate.errors.length){
+            results.fullDate.errors.forEach(err => {
+                showMessage('fullDate', err);
+                errCount++;
+            });
+        }
+    }
 
     const pass = Object.values(results).every( value => value.errors.length === 0 );
 
