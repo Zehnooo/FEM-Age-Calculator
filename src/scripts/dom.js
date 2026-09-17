@@ -74,7 +74,7 @@ const newInput = (type) => {
                     break;
                 case 'year':
                     inp.placeholder = 'YYYY';
-                    inp.minLength = value.length;
+
                     break;
             }
             c.id = `${key}-container`
@@ -85,6 +85,7 @@ const newInput = (type) => {
             inp.name = key;
             inp.id = `${key}-input`;
             inp.maxLength = value.length;
+            inp.minLength = value.length;
         });
 
     inputTray.append(lab, inp);
