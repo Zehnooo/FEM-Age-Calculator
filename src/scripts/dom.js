@@ -55,7 +55,7 @@ const inputForm = () => {
 }
 
 const newInput = (type) => {
-    const c = newEl('div', null, null, ['p04']);
+    const c = newEl('div', null, null, ['p04', 'g04']);
     const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
     const msgTray = newEl('div');
 
