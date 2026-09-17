@@ -5,7 +5,7 @@ export const newEl = (type, text = null, id = null, classes = []) => {
     const e = document.createElement(type);
     if (text){ e.textContent = text; }
     if (id){ e.id = id; }
-    if (classes.length > 0) { classes.forEach(cl => e.classList.add(cl)); }
+    if (classes.length > 0){ classes.forEach(cl => e.classList.add(cl)); }
     return e;
 }
 
@@ -24,9 +24,11 @@ export const collectForm = (e) => {
 
 
     Object.keys(results).forEach(key => {
+        document.querySelector(`#${key}-messages`).replaceChildren();
 
         if (!results[key].errors.length){
             applyStatusClass(key, true);
+
         }
 
         if (results[key].errors.length){
@@ -39,7 +41,9 @@ export const collectForm = (e) => {
     });
 
     const isValidInputs = Object.values(results).every( result => result.errors.length === 0 );
-    if (isValidInputs) { results.fullDate = (validation([year, month, day], 'full-date'));
+    if (isValidInputs) {
+        document.querySelector('#fullDate-messages').replaceChildren();
+        results.fullDate = (validation([year, month, day], 'full-date'));
         if (results.fullDate.errors.length){
             results.fullDate.errors.forEach(err => {
                 showMessage('fullDate', err);
@@ -56,7 +60,7 @@ export const collectForm = (e) => {
 const validation = (value, type) => {
     const errors = [];
     const success = [];
-    let isNull, isValid, isFuture, isDayNumInvalid;
+    let isNull, isNum, isValid, isFuture, isDayNumInvalid;
     let year, month, day;
 
     if (Array.isArray(value)) { [year, month, day] = value; }
@@ -64,25 +68,28 @@ const validation = (value, type) => {
     switch(type){
         case 'day':
             isNull = validate.middleware.checkNull(value);
-            if (isNull.success) { isValid = validate.day.check(value); }
+            if (isNull.success) { isNum = validate.middleware.checkNum(value); }
+            if (isNum.success) { isValid = validate.day.check(value); }
             break;
         case 'month':
             isNull = validate.middleware.checkNull(value);
-            if (isNull.success) { isValid = validate.month.check(value); }
+            if (isNull.success) { isNum = validate.middleware.checkNum(value); }
+            if (isNum.success) { isValid = validate.month.check(value); }
             break;
         case 'year':
             isNull = validate.middleware.checkNull(value);
-            if (isNull.success) { isValid = validate.year.check(value); }
+            if (isNull.success) { isNum = validate.middleware.checkNum(value); }
+            if (isNum.success) { isValid = validate.year.check(value); }
             break;
         case 'full-date':
             isFuture = validate.fullDate.checkFuture(year, month, day);
             if (isFuture.success) { isDayNumInvalid = validate.fullDate.checkMonthDays(year, month, day); }
     }
 
-    [isNull, isValid, isFuture, isDayNumInvalid].forEach(x => {
+    [isNull, isNum, isValid, isFuture, isDayNumInvalid].forEach(x => {
         if (x !== undefined && x.success === false){ x.type = type; errors.push(x); }
         if (x !== undefined && x.success){ x.type = type; success.push(x); }
     });
 
-    return { errors, success } || null;
+    return { errors, success };
 }
