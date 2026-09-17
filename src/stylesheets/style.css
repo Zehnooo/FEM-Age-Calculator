@@ -12,6 +12,20 @@
 
 html, body {
     font-family: var(--ff);
+
+}
+#app {
+    background: var(--grey-100);
+    min-height: 100vh;
+
+}
+
+#content {
+    background: var(--white);
+    border-radius: .6rem .6rem 6.25rem .6rem;
+    max-width: calc(100% - 36rem);
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .fx { display: flex; }
@@ -48,29 +62,38 @@ html, body {
 .fw500 { font-weight: 500; }
 .fw600 { font-weight: 600; }
 .fw700 { font-weight: 700; }
+.fw800 { font-weight: 800; }
+
+.fs100 { font-size: .75rem; }
+.fs200 { font-size: .875rem; }
+.fs300 { font-size: 1rem; }
+.fs400 { font-size: 1.25rem; }
+.fs500 { font-size: 1.5rem; }
+.fs600 { font-size: 2rem; }
+.fs700 { font-size: 2.5rem; }
+.fs800 { font-size: 3rem; }
+.fs900 { font-size: 3.5rem; }
+.fs1000 { font-size: 4rem; }
 
 .w { width: 100%; }
 .wa  { width: auto; }
 
-#content {
-    max-width: 1440px;
-    margin: 0 auto;
-}
+.brt { border: 2px solid transparent; }
 
-.inp-tray label {
-    text-transform: uppercase;
-}
+.txt-p { color: var(--purple); }
+.txt-b { color: var(--black); }
+.txt-g { color: var(--grey-200); }
 
-.inp { min-width: 100px; }
+.inp-tray label { text-transform: uppercase; }
+.inp { min-width: 0; field-sizing: content;  }
 .inp::placeholder { font-weight: 700; }
 
 #submit-form.btn {
     background: var(--purple);
-    border: 2px solid transparent;
     cursor: pointer;
     transition: transform 0.06s ease-in-out;
 }
 
-#submit-form.btn:active {
-    transform: scale(90%);
-}
+#submit-form.btn:active { transform: scale(90%); }
+
+.result > p {  margin: 0; font-style: italic; }

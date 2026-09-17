@@ -18,8 +18,8 @@ export const init = () => {
 }
 
 const inputForm = () => {
-    const c = newEl('div');
-    const f = newEl('form', null, 'age-input-form');
+    const c = newEl('div', null, null,  ['p1']);
+    const f = newEl('form', null, 'age-input-form', ['fx', 'fdc', 'gp06']);
 
     f.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -43,7 +43,7 @@ const inputForm = () => {
 
     const submitCon = newEl('div', null, 'submit-con', ['fx', 'ac']);
     const line = newEl('hr', null, null, ['hr',  'w']);
-    const submit = newEl('button', null, 'submit-form',  ['btn', 'bgt', 'p06', 'br50']);
+    const submit = newEl('button', null, 'submit-form',  ['btn', 'bgt', 'p06', 'br50', 'brt']);
     submit.type = 'submit';
     submit.innerHTML = icons.submit;
 
@@ -54,10 +54,10 @@ const inputForm = () => {
 }
 
 const newInput = (type) => {
-    const c = newEl('div');
-    const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc']);
+    const c = newEl('div', null, null, ['p04']);
+    const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
     const msgTray = newEl('div');
-    const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p04']);
+    const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p04', 'brt']);
     inp.type = 'text';
     inp.required = true;
 
@@ -94,12 +94,12 @@ const newInput = (type) => {
 }
 
 const resultSection = () => {
-    const c = newEl('div');
-    let resultCon = newEl('div');
+    const c = newEl('div', null, null, ['p1']);
+    let resultCon = newEl('div', null, null, ['fx', 'fdc', 'gp04']);
     ["years", "months", "days"].forEach(res => {
-        const con = newEl('div', null, null, ['fx', 'wa', 'ac', 'gp04']);
-        const results = newEl('span', '--', `${res}-result`);
-        const name = newEl('p', res);
+        const con = newEl('div', null, null, ['fx', 'wa', 'ac', 'gp04', 'result']);
+        const results = newEl('span', '--', `${res}-result`, ['txt-p', 'fs1000', 'fw600']);
+        const name = newEl('p', res, null, ['txt-b', 'fs1000', 'fw800']);
         con.append(results, name);
         resultCon.append(con);
     });
