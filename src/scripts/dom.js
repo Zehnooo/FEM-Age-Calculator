@@ -12,7 +12,7 @@ const inputs = [
 ]
 
 export const init = () => {
-    const con = newEl('div');
+    const con = newEl('div', null, 'content', ['w', 'p1']);
     con.append(inputForm(), resultSection());
     app.append(con);
 }
@@ -33,43 +33,47 @@ const inputForm = () => {
 
     const dateError = newEl('div', null, 'fullDate-messages');
 
-    const allInputCon = newEl('div');
+    const allInputCon = newEl('div', null, null, ['fx', 'start', 'gp1']);
 
     inputs.forEach(i => {
         const input = newInput(i);
         allInputCon.append(input);
     });
 
-    const submit = newEl('button', null, 'submit-form');
+
+    const submitCon = newEl('div', null, 'submit-con', ['fx', 'ac']);
+    const line = newEl('hr', null, null, ['hr',  'w']);
+    const submit = newEl('button', null, 'submit-form',  ['btn', 'bgt', 'p06', 'br50']);
     submit.type = 'submit';
     submit.innerHTML = icons.submit;
 
-    f.append(allInputCon, dateError, submit);
+    submitCon.append(line, submit);
+    f.append(allInputCon, dateError, submitCon);
     c.append(f);
     return c;
 }
 
 const newInput = (type) => {
     const c = newEl('div');
-    const inputTray = newEl('div');
+    const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc']);
     const msgTray = newEl('div');
-    const inp = newEl('input');
+    const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p04']);
     inp.type = 'text';
     inp.required = true;
 
-    const lab = newEl('label');
+    const lab = newEl('label', null, null, ['fw700']);
 
     Object.entries(type)
         .forEach(([key, value]) => {
             switch(key){
                 case 'day':
-                    inp.placeholder = '31';
+                    inp.placeholder = 'DD';
                     break;
                 case 'month':
-                    inp.placeholder = '12';
+                    inp.placeholder = 'MM';
                     break;
                 case 'year':
-                    inp.placeholder = '2026';
+                    inp.placeholder = 'YYYY';
                     inp.minLength = value.length;
                     break;
             }
@@ -92,9 +96,11 @@ const resultSection = () => {
     const c = newEl('div');
     let resultCon = newEl('div');
     ["years", "months", "days"].forEach(res => {
+        const con = newEl('div', null, null, ['fx', 'wa', 'ac', 'gp04']);
         const results = newEl('span', '--', `${res}-result`);
         const name = newEl('p', res);
-        resultCon.append(results, name);
+        con.append(results, name);
+        resultCon.append(con);
     });
     c.append(resultCon);
     return c;
