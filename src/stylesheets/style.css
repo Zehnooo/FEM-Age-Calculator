@@ -1,6 +1,7 @@
 :root {
     --purple: hsl(259, 100%, 65%);
     --red: hsl(0, 100%, 67%);
+    --green: hsl(161, 100%, 17%);
     --white: hsl(0, 100%, 100%);
     --grey-100: hsl(0, 0%, 94%);
     --grey-200: hsl(0, 0%, 86%);
@@ -113,9 +114,16 @@ html, body {
 #submit-form.btn:active { transform: scale(90%); }
 #submit-form.btn:hover { background-color: var(--black); }
 
-.result > p {  margin: 0; clamp(12px, 5cqw, 24px); }
+.result > p { clamp(12px, 5cqw, 24px); }
 .result > span { text-wrap: nowrap; text-align: center; }
 .result > * { font-style: italic; }
 
 .hr { background: var(--grey-100); opacity: .3; }
+.msg { font-style: italic; text-wrap: pretty; max-width: 125px; }
 
+.inp-tray.error .inp { border: 1px solid var(--red); }
+.inp-tray.error label { color: var(--red); }
+.msg.error { color: var(--red); }
+
+.inp-tray.success .inp { border: 1px solid var(--green); }
+#fullDate-messages > p { max-width: none !important; }
