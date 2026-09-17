@@ -2,7 +2,7 @@ import { newEl } from './utils.js';
 
 const createMessage = (result) => {
     const status = result.success === false ? 'error' : 'success';
-    return newEl('p', result.message, null, ['msg', status]);
+    return newEl('p', result.message, null, ['msg', status, 'fs100']);
 }
 
 export const showMessage = (inputName, result) => {
@@ -11,10 +11,23 @@ export const showMessage = (inputName, result) => {
 }
 
 export const applyStatusClass = (inputName, inputStatus) => {
-    const el = document.querySelector(`#${inputName}-container`);
-    if (el) el.classList.add(inputStatus === false ? 'error' : 'success');
+    const el = document.querySelector(`#${inputName}-tray`);
+    if (el) {
+        el.className = 'inp-tray fx fdc gp04 test';
+        el.classList.add(inputStatus ? 'success' : 'error');
+    }
 }
 
 export const updateAgeElements = (inputName, value) => {
     document.querySelector(`#${inputName}-result`).textContent = value;
+}
+
+export const resetAgeElements = () => {
+     document.querySelectorAll('.result > span').forEach(x => x.textContent = '- -');
+}
+
+export const updateDigits = (e) => {
+    if (e.target.id === 'year-input') { return; }
+    if (e.target.value.trim() === '') { return; }
+    if (e.target.value.length === 1) { e.target.value = '0' + e.target.value; }
 }
