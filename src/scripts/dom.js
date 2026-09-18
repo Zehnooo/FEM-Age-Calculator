@@ -5,12 +5,6 @@ import {updateAgeElements, updateDigits} from "./domUpdates.js";
 
 const app = document.querySelector('#app');
 
-const inputs = [
-    { day: { min: 1, max: 31, length: 2 }},
-    { month: { min: 1, max:  12, length: 2 }},
-    { year: { min: 0, max: calc.returnCurrentDate().getFullYear(), length: 4 }}
-]
-
 export const init = () => {
     const con = newEl('div', null, 'content', ['w', 'p1']);
     con.append(inputForm(), resultSection());
