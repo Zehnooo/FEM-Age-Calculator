@@ -1,7 +1,7 @@
 import { newEl, collectForm } from './utils.js';
 import calc from './calculator.js';
 import icons from './icons.js';
-import {updateAgeElements, updateDigits} from "./domUpdates.js";
+import {shuffleNumber, updateDigits} from "./domUpdates.js";
 
 const app = document.querySelector('#app');
 
@@ -22,7 +22,7 @@ const inputForm = () => {
         if (res.success){
             Object.entries(res.data).forEach(([key, value]) => {  calc.setValue(key, value); });
             const age = calc.returnAge(calc.returnCalcDate(), calc.returnCurrentDate());
-            Object.entries(age).forEach(([key, value]) => { updateAgeElements(key, value); });
+            shuffleNumber(age);
         }
     });
 
