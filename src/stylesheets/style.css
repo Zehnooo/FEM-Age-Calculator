@@ -154,5 +154,6 @@ html, body { background: var(--grey-100); font-family: var(--ff), "Segoe UI", Ta
     }
     #submit-con .btn  svg  { width: 36px; }
     #submit-con .btn:active { transform: translate(-50%, -50%) scale(0.9); }
-
+    .result-con { padding: .6rem; }
+    .result > * { font-size: 3rem; }
 }

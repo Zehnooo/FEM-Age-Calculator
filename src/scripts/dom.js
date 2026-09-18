@@ -81,7 +81,7 @@ const newInput = (name) => {
 
 const resultSection = () => {
     const c = newEl('div', null, null, ['p1']);
-    let resultCon = newEl('div', null, null, ['fx', 'fdc', 'gp04']);
+    let resultCon = newEl('div', null, null, ['fx', 'fdc', 'gp04', 'result-con']);
     ["years", "months", "days"].forEach(res => {
         const con = newEl('div', null, null, ['fx', 'wa', 'ac', 'gp06', 'start', 'result']);
         const results = newEl('span', '- -', `${res}-result`, ['txt-p', 'fs1000', 'fw800']);
