@@ -39,6 +39,7 @@ export default {
     },
     middleware: {
         checkNull(v){
+            v = v.trim();
             if (!v || v === '') { return { success: false, message: 'Input cannot be blank' }; }
             return { success: true };
         },
