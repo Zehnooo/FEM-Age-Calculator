@@ -11,10 +11,8 @@
     --ff: Poppins;
 }
 
-html, body {
-    font-family: var(--ff), "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+html, body { font-family: var(--ff), "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
 
-}
 #app {
     background: var(--grey-100);
     min-height: 100vh;
@@ -94,7 +92,6 @@ html, body {
 .pr { position: relative; }
 .pa { position: absolute; }
 
-
 .inp-tray label { text-transform: uppercase; letter-spacing: .2rem; }
 
 .inp {
@@ -109,11 +106,12 @@ html, body {
 .inp::placeholder { font-weight: 700; color: var(--grey-500); }
 
 #submit-form.btn {
+    display: inline-flex;
+    align-items: center;
     background-color: var(--purple);
     cursor: pointer;
     transition: transform 0.06s ease-in-out, background-color .2s ease-in-out;
 }
-
 #submit-form.btn:active { transform: scale(90%); }
 #submit-form.btn:hover { background-color: var(--black); }
 
