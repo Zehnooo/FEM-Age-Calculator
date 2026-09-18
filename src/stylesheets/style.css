@@ -134,8 +134,10 @@ html, body { background: var(--grey-100); font-family: var(--ff), "Segoe UI", Ta
 
 @media (width < 770px){
     #app {
+        min-width: 0;
         width: auto;
         max-width: 350px;
+        overflow: hidden;
     }
      #content {
         width: 100%;
