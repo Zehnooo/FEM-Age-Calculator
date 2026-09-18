@@ -42,6 +42,7 @@ export const collectForm = (e) => {
         results.fullDate = (validation([year, month, day], 'fullDate'));
         if (results?.fullDate?.errors?.length){
             results?.fullDate?.errors?.forEach(err => { showMessage('fullDate', err); errCount++; });
+            ['day', 'month', 'year'].forEach(key => { applyStatusClass(key, false) });
         }
     }
 
