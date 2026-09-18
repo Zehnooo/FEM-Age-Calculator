@@ -27,7 +27,8 @@ export const resetAgeElements = () => {
 }
 
 export const updateDigits = (e) => {
+    const val = e.target.value.trim();
     if (e.target.id === 'year-input') { return; }
-    if (e.target.value.trim() === '') { return; }
-    if (e.target.value.length === 1) { e.target.value = '0' + e.target.value; }
+    if (val === '') { return; }
+    if (val.length === 1) { e.target.value = '0' + val; }
 }
