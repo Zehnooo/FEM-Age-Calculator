@@ -55,37 +55,30 @@ const inputForm = () => {
 }
 
 const newInput = (name) => {
-    const c = newEl('div', null, null, ['fx', 'fdc', 'p04', 'gp04']);
-    const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
-    const msgTray = newEl('div', null, null, ['msg-tray']);
 
+    const c = newEl('div', null, null, ['fx', 'fdc', 'p04', 'gp04']);
+        c.id = `${name}-container`;
+
+    const inputTray = newEl('div', null, null, ['inp-tray', 'fx', 'fdc', 'gp04']);
+        inputTray.id = `${name}-tray`;
+
+    const msgTray = newEl('div', null, null, ['msg-tray']);
+        msgTray.id = `${name}-messages`;
+
+    const length = name === 'year' ? 4 : 2;
     const inp = newEl('input', null, null, ['inp', 'wa', 'br04', 'p06', 'brt', 'fs600', 'bgw', 'brg', 'txt-b', 'fw700']);
-    inp.type = 'text';
-    inp.required = true;
-    inp.addEventListener('focusout', updateDigits);
+        inp.type = 'text';
+        inp.required = true;
+        inp.name = name;
+        inp.id = `${name}-input`;
+        inp.minLength = length;
+        inp.maxLength = length;
+        inp.placeholder = name[0].toUpperCase().repeat(length);
+        inp.addEventListener('focusout', updateDigits);
 
     const lab = newEl('label', null, null, ['fw700', 'txt-g5']);
-
-    switch(name){
-                case 'day':
-                    inp.placeholder = 'DD';
-                    break;
-                case 'month':
-                    inp.placeholder = 'MM';
-                    break;
-                case 'year':
-                    inp.placeholder = 'YYYY';
-
-                    break;
-            }
-            c.id = `${name}-container`
-            inputTray.id = `${name}-tray`;
-            msgTray.id = `${name}-messages`;
-            lab.textContent = name;
-            lab.htmlFor = `${name}-input`;
-            inp.name = name;
-            inp.id = `${name}-input`;
-
+        lab.textContent = name;
+        lab.htmlFor = `${name}-input`;
 
     inputTray.append(lab, inp);
     c.append(inputTray, msgTray);
