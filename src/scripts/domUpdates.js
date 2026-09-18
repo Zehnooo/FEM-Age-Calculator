@@ -28,7 +28,10 @@ export const resetAgeElements = () => {
 
 export const updateDigits = (e) => {
     const val = e.target.value.trim();
-    if (e.target.id === 'year-input') { return; }
-    if (val === '') { return; }
-    if (val.length === 1) { e.target.value = '0' + val; }
+    if (!val || val === '') return;
+    const id = e.target.id;
+    const length =  val.length;
+    const maxLength = id.includes('year') ? 4 : 2;
+    if (length === maxLength) return;
+    e.target.value = '0'.repeat(maxLength - length) + val;
 }
