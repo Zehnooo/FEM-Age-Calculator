@@ -16,6 +16,7 @@ html, body { background: var(--grey-100); font-family: var(--ff), "Segoe UI", Ta
 #app {
     min-height: 100vh;
     min-width: 550px;
+    margin: 0 auto;
 }
 
 #content {
@@ -96,6 +97,7 @@ html, body { background: var(--grey-100); font-family: var(--ff), "Segoe UI", Ta
 .inp {
     min-width: 8rem;
     field-sizing: content;
+    width: 100%;
     max-width: 100%;
     height: 4rem;
     caret-color: var(--purple);
@@ -127,24 +129,27 @@ html, body { background: var(--grey-100); font-family: var(--ff), "Segoe UI", Ta
 
 .inp-tray.success .inp { border: 1px solid var(--green); }
 .msg-tray { min-height: 50px; }
-#fullDate-messages > p { max-width: none !important; }
-#fullDate-messages { top: 0; right: 0; }
+#fullDate-messages > p { max-width: none !important; text-wrap: nowrap; }
+#fullDate-messages { top: 50%; left: 50%; transform: translate(-50%, 0); }
 
 @media (width < 770px){
     #app {
-        min-width: 300px;
+        width: auto;
+        max-width: 350px;
     }
      #content {
-        max-width: calc(100% - 2rem);
+        width: 100%;
+        max-width: 350px;
         min-width: 300px;
         padding: 0;
     }
     .inp {
         min-width: 0;
         width: 80px;
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
-    .all-inputs { justify-content: center; }
+    .inp-tray label { font-size: .8rem; }
+    .all-inputs { justify-content: center; gap: .6rem; }
     #submit-con { position: relative; }
     #submit-con .btn {
         position: absolute;
@@ -155,5 +160,5 @@ html, body { background: var(--grey-100); font-family: var(--ff), "Segoe UI", Ta
     #submit-con .btn  svg  { width: 36px; }
     #submit-con .btn:active { transform: translate(-50%, -50%) scale(0.9); }
     .result-con { padding: .6rem; }
-    .result > * { font-size: 3rem; }
+    .result > * { font-size: 2.75rem; text-align: left; }
 }

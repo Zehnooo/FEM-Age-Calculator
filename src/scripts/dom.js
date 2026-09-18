@@ -26,7 +26,7 @@ const inputForm = () => {
         }
     });
 
-    const dateError = newEl('div', null, 'fullDate-messages', ['pa']);
+    const dateError = newEl('div', null, 'fullDate-messages', ['pa', 'p06']);
 
     const allInputCon = newEl('div', null, null, ['fx', 'start', 'gp1', 'all-inputs']);
 
