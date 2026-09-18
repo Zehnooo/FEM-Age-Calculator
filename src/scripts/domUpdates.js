@@ -18,7 +18,7 @@ export const applyStatusClass = (inputName, inputStatus) => {
     }
 }
 
-export const updateAgeElements = (inputName, value) => {
+const updateAgeElements = (inputName, value) => {
     document.querySelector(`#${inputName}-result`).textContent = value;
 }
 
@@ -34,4 +34,25 @@ export const updateDigits = (e) => {
     const maxLength = id.includes('year') ? 4 : 2;
     if (length === maxLength) return;
     e.target.value = '0'.repeat(maxLength - length) + val;
+}
+
+export const shuffleNumber = (result) => {
+    Object.entries(result).forEach(([key,  value]) => {
+        const el = document.querySelector(`#${key}-result`);
+        let str = String(value);
+        const digitCount = str.length;
+
+        const int = setInterval(() => {
+            let randomStr = '';
+            for (let i = 0; i < digitCount;  i++){
+                randomStr += Math.floor(Math.random() * 10);
+            }
+            el.textContent = randomStr;
+        }, 50);
+
+        setTimeout(() => {
+            clearInterval(int);
+            updateAgeElements(key, value);
+        }, 1500);
+    });
 }
