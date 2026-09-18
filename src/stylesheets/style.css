@@ -11,10 +11,9 @@
     --ff: Poppins;
 }
 
-html, body { font-family: var(--ff), "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+html, body { background: var(--grey-100); font-family: var(--ff), "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
 
 #app {
-    background: var(--grey-100);
     min-height: 100vh;
     min-width: 550px;
 }
@@ -130,3 +129,30 @@ html, body { font-family: var(--ff), "Segoe UI", Tahoma, Geneva, Verdana, sans-s
 .msg-tray { min-height: 50px; }
 #fullDate-messages > p { max-width: none !important; }
 #fullDate-messages { top: 0; right: 0; }
+
+@media (width < 770px){
+    #app {
+        min-width: 300px;
+    }
+     #content {
+        max-width: calc(100% - 2rem);
+        min-width: 300px;
+        padding: 0;
+    }
+    .inp {
+        min-width: 0;
+        width: 80px;
+        font-size: 1.25rem;
+    }
+    .all-inputs { justify-content: center; }
+    #submit-con { position: relative; }
+    #submit-con .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #submit-con .btn  svg  { width: 36px; }
+    #submit-con .btn:active { transform: translate(-50%, -50%) scale(0.9); }
+
+}

@@ -28,7 +28,7 @@ const inputForm = () => {
 
     const dateError = newEl('div', null, 'fullDate-messages', ['pa']);
 
-    const allInputCon = newEl('div', null, null, ['fx', 'start', 'gp1']);
+    const allInputCon = newEl('div', null, null, ['fx', 'start', 'gp1', 'all-inputs']);
 
     ['day', 'month', 'year'].forEach(i => {
         const input = newInput(i);
