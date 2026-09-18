@@ -38,7 +38,7 @@ const inputForm = () => {
 
     const submitCon = newEl('div', null, 'submit-con', ['fx', 'ac']);
     const line = newEl('hr', null, null, ['hr',  'w']);
-    const submit = newEl('button', null, 'submit-form',  ['btn', 'bgt', 'p06', 'br50', 'brt']);
+    const submit = newEl('button', null, 'submit-form',  ['btn', 'bgt', 'p1', 'br50', 'brt']);
     submit.type = 'submit';
     submit.innerHTML = icons.submit;
 
