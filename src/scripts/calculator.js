@@ -23,15 +23,8 @@ export default {
             days += previousMonth.getDate();
         }
 
-        if (months < 0) {
-            years--;
-            months += 12;
-        }
+        if (months < 0) { years--; months += 12; }
 
-        return {
-            years,
-            months,
-            days
-        };
+        return { years, months, days };
     }
 }
